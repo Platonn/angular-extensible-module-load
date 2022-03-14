@@ -10,6 +10,7 @@ export class BazModule {
         {
           provide: FOO,
           useValue: 'baz',
+          multi: true,
         },
       ],
     };

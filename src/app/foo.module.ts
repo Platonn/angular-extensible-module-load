@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Inject,
@@ -11,7 +12,7 @@ import { FOO } from './foo.token';
 
 @Component({
   selector: 'app-foo',
-  template: '{{ foo }} works!',
+  template: '{{ foo | json }} works!',
 })
 export class FooComponent {
   constructor(@Inject(FOO) public readonly foo: string) {}
@@ -19,6 +20,7 @@ export class FooComponent {
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forChild([
       {
         path: '',
@@ -27,6 +29,7 @@ export class FooComponent {
     ]),
   ],
   declarations: [FooComponent],
+  exports: [FooComponent],
 })
 export class FooModule {
   static withOptions({ foo = 'foo' } = {}): ModuleWithProviders<FooModule> {
@@ -36,6 +39,7 @@ export class FooModule {
         {
           provide: FOO,
           useValue: foo,
+          multi: true,
         },
       ],
     };

@@ -6,6 +6,7 @@ import { FOO } from './foo.token';
     {
       provide: FOO,
       useValue: 'qux',
+      multi: true,
     },
   ],
 })
