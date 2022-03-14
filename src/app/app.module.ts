@@ -30,6 +30,11 @@ export class AppComponent {}
             })
           ),
       },
+      {
+        path: 'wrapper-module',
+        loadChildren: () =>
+          import('./wrapper.module').then((m) => m.WrapperModule),
+      },
     ]),
   ],
   declarations: [AppComponent],
